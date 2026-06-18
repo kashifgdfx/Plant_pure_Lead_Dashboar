@@ -33,6 +33,9 @@ import {
   UserCircle,
   Zap,
 } from "lucide-react";
+import { FaInstagram,FaFacebook } from "react-icons/fa6";
+import { ImWhatsapp } from "react-icons/im";
+
 import logo from "/logo.png";
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -209,9 +212,9 @@ function LeadsApp() {
             <div className="mt-6 px-2 text-[10px] font-semibold uppercase tracking-[0.2em] opacity-60">Channels</div>
             <ChannelNav active={activeChannel === "all"} onClick={() => setActiveChannel("all")} icon={Inbox} label="All channels" count={counts.all} />
             <ChannelNav active={activeChannel === "website"} onClick={() => setActiveChannel("website")} icon={Globe} label="Website" count={counts.website} dot="var(--channel-web)" />
-            <ChannelNav active={activeChannel === "instagram"} onClick={() => setActiveChannel("instagram")} icon={BadgeInfo} label="Instagram" count={counts.instagram} dot="var(--channel-instagram)" />
-            <ChannelNav active={activeChannel === "facebook"} onClick={() => setActiveChannel("facebook")} icon={BadgeInfo} label="Facebook" count={counts.facebook} dot="var(--channel-facebook)" />
-            <ChannelNav active={activeChannel === "whatsapp"} onClick={() => setActiveChannel("whatsapp")} icon={MessageCircle} label="WhatsApp" count={counts.whatsapp} dot="var(--channel-whatsapp)" />
+            <ChannelNav active={activeChannel === "instagram"} onClick={() => setActiveChannel("instagram")} icon={FaInstagram} label="Instagram" count={counts.instagram} dot="var(--channel-instagram)" />
+            <ChannelNav active={activeChannel === "facebook"} onClick={() => setActiveChannel("facebook")} icon={FaFacebook} label="Facebook" count={counts.facebook} dot="var(--channel-facebook)" />
+            <ChannelNav active={activeChannel === "whatsapp"} onClick={() => setActiveChannel("whatsapp")} icon={ImWhatsapp } label="WhatsApp" count={counts.whatsapp} dot="var(--channel-whatsapp)" />
           </>
         )}
 
