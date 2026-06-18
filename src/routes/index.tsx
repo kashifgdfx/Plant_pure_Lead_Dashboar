@@ -441,7 +441,7 @@ function LeadsApp() {
           <LeadsView query={query} setQuery={setQuery} />
         )}
         {activeTab === "reports" && <ReportsView />}
-        {activeTab === "settings" && <SettingsView />}
+        {activeTab === "settings" && <SettingsView/>}
       </main>
     </div>
   );
@@ -1348,17 +1348,19 @@ function ReportsView() {
 }
 
 /* ---------------- SETTINGS ---------------- */
+const SETTINGS_SECTIONS = [
+  { id: "profile", label: "Profile", icon: UserCircle },
+  { id: "channels", label: "Channels", icon: Plug },
+  { id: "team", label: "Team & roles", icon: Users },
+  { id: "notifications", label: "Notifications", icon: Bell },
+  { id: "automations", label: "Automations", icon: Zap },
+  { id: "billing", label: "Billing", icon: CreditCard },
+  { id: "security", label: "Security", icon: Shield },
+];
+
 function SettingsView() {
   const [section, setSection] = useState("profile");
-  const sections = [
-    { id: "profile", label: "Profile", icon: UserCircle },
-    { id: "channels", label: "Channels", icon: Plug },
-    { id: "team", label: "Team & roles", icon: Users },
-    { id: "notifications", label: "Notifications", icon: Bell },
-    { id: "automations", label: "Automations", icon: Zap },
-    { id: "billing", label: "Billing", icon: CreditCard },
-    { id: "security", label: "Security", icon: Shield },
-  ];
+  const sections = SETTINGS_SECTIONS;
 
   return (
     <>
@@ -1393,12 +1395,34 @@ function SettingsView() {
                   Change logo
                 </button>
               </div>
-              <Field label="Workspace name" value="PlantPure India" />
-              <Field label="Website" value="https://plantpure.in" />
-              <Field label="Default currency" value="INR (₹)" />
-              <Field label="Timezone" value="Asia/Kolkata (IST)" />
+            <div className="space-y-3">
+  <div className="rounded-lg border border-border bg-background p-3">
+    <div className="text-xs text-muted-foreground">Workspace Name</div>
+    <div className="mt-1 text-sm font-medium">PlantPure India</div>
+  </div>
+
+  <div className="rounded-lg border border-border bg-background p-3">
+    <div className="text-xs text-muted-foreground">Website</div>
+    <div className="mt-1 text-sm font-medium">
+      https://plantpure.in
+    </div>
+  </div>
+
+  <div className="rounded-lg border border-border bg-background p-3">
+    <div className="text-xs text-muted-foreground">Default Currency</div>
+    <div className="mt-1 text-sm font-medium">INR (₹)</div>
+  </div>
+
+  <div className="rounded-lg border border-border bg-background p-3">
+    <div className="text-xs text-muted-foreground">Timezone</div>
+    <div className="mt-1 text-sm font-medium">
+      Asia/Kolkata (IST)
+    </div>
+  </div>
+</div>
             </Card>
           )}
+
 
           {section === "channels" && (
             <div className="space-y-4">
@@ -1654,8 +1678,8 @@ function PageHeader({
   subtitle,
   action,
 }: {
-  title: string;
-  subtitle: string;
+  title: React.ReactNode;
+  subtitle?: React.ReactNode;
   action?: React.ReactNode;
 }) {
   return (
